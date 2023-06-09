@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "serverless-plugin-include-dependencies": "^5.1.0",
+    "serverless-python-common-requirements": "^4.1.2",
+    "serverless-python-requirements": "^6.0.0"
+  }
+}

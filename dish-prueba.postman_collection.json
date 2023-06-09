@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "137b69f5-dfa8-4088-aa87-aa965e16036a",
+		"name": "dish-prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18341674"
+	},
+	"item": [
+		{
+			"name": "obtener todos los suscriptores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ragv78fu3m.execute-api.us-east-1.amazonaws.com/dev/subscribers",
+					"protocol": "https",
+					"host": [
+						"ragv78fu3m",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"subscribers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener un suscriptor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxOTI4ODYyLCJpYXQiOjE2ODE5Mjg1NjIsImp0aSI6IjRhM2E0NmY0ZWIwMzQ3ZTY4ZjVjNjU1YzY2MWM2MjgyIiwidXNlcl9pZCI6NX0.kyzrQxaO4_nsg7VmEbRLHxEKq3sFZCxgu6ewPGzMVrE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ragv78fu3m.execute-api.us-east-1.amazonaws.com/dev/subscribers?telefono_celular=5555555585",
+					"protocol": "https",
+					"host": [
+						"ragv78fu3m",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"subscribers"
+					],
+					"query": [
+						{
+							"key": "telefono_celular",
+							"value": "5555555585"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingresar un suscriptor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"suscriptor\":{\r\n        \"info_nombre\":{\r\n            \"nombre\":\"Pedro\",\r\n            \"apellido_materno\":\"Arcos\"\r\n        },\r\n        \"edad\":25,\r\n        \"telefono_celular\":\"5555555455\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ragv78fu3m.execute-api.us-east-1.amazonaws.com/dev/subscribers",
+					"protocol": "https",
+					"host": [
+						"ragv78fu3m",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"subscribers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "modificar todo un suscriptor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"suscriptor\":{\r\n        \"info_nombre\":{\r\n            \"nombre\":\"Pedro\",\r\n            \"apellido_materno\":\"Ballesteros\"\r\n        },\r\n        \"edad\":25,\r\n        \"telefono_celular\":\"5555555455\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ragv78fu3m.execute-api.us-east-1.amazonaws.com/dev/subscribers",
+					"protocol": "https",
+					"host": [
+						"ragv78fu3m",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"subscribers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar un suscriptor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"telefono_celular\": \"5555555355\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ragv78fu3m.execute-api.us-east-1.amazonaws.com/dev/subscribers",
+					"protocol": "https",
+					"host": [
+						"ragv78fu3m",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"subscribers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

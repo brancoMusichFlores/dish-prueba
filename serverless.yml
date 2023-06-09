@@ -1,0 +1,80 @@
+service: dish-serverless-app
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: "*"
+
+custom:
+  customEnvVars: &env_variables
+    SECRET_ARN: arn:aws:secretsmanager:us-east-1:121751330965:secret:rds!db-ff905131-359d-46b7-9dc1-8d34a0936001-G10tor
+    DB_DATABASE: dish_rds
+    LAMBDA_QUERIES_ARN: arn:aws:lambda:us-east-1:121751330965:function:dish-serverless-app-dev-queries
+    DB_HOST: dish-db.c1fflxiqu6q0.us-east-1.rds.amazonaws.com
+  pythonRequirements:
+    dockerizePip: true
+
+
+plugins:
+  - serverless-plugin-include-dependencies
+  - serverless-python-requirements
+
+functions:
+  createSubscriber:
+    handler: create_subscribers.lambda_handler
+    runtime: python3.9
+    events:
+      - http:
+          path: subscribers
+          method: post
+          cors: true
+
+    environment:
+      <<: *env_variables
+
+  readSubscribers:
+    handler: get_subscribers.lambda_handler
+    runtime: python3.9
+    events:
+      - http:
+          path: subscribers
+          method: get
+          cors: true
+
+    environment:
+      <<: *env_variables
+
+  updateSubscriber:
+    handler: update_subscribers.lambda_handler
+    runtime: python3.9
+    events:
+      - http:
+          path: subscribers
+          method: put
+          cors: true
+
+    environment:
+      <<: *env_variables
+
+  deleteSubscriber:
+    handler: delete_subscribers.lambda_handler
+    runtime: python3.9
+    events:
+      - http:
+          path: subscribers
+          method: delete
+          cors: true
+
+    environment:
+      <<: *env_variables
+
+  queries:
+    handler: queries.lambda_handler
+    runtime: python3.9
+
+    environment:
+      <<: *env_variables
